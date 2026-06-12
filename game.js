@@ -343,6 +343,12 @@ function render() {
   } else {
     renderHighscore();
   }
+
+  // Wall border
+  const dying = gameState === 'dying';
+  ctx.strokeStyle = dying && !flashOn ? 'transparent' : dying ? '#FF4444' : '#00FF44';
+  ctx.lineWidth = 3;
+  ctx.strokeRect(1.5, 1.5, canvas.width - 3, canvas.height - 3);
 }
 
 function renderGame() {
