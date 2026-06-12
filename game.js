@@ -344,11 +344,11 @@ function render() {
     renderHighscore();
   }
 
-  // Wall border
+  // Wall border via CSS outline (avoids mobile canvas-edge clipping)
   const dying = gameState === 'dying';
-  ctx.strokeStyle = dying && !flashOn ? 'transparent' : dying ? '#FF4444' : '#00FF44';
-  ctx.lineWidth = 3;
-  ctx.strokeRect(1.5, 1.5, canvas.width - 3, canvas.height - 3);
+  canvas.style.outline = dying
+    ? (flashOn ? '3px solid #FF4444' : 'none')
+    : '3px solid #00FF44';
 }
 
 function renderGame() {
